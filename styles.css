@@ -24,6 +24,7 @@ body {
     text-align: center;
     cursor: pointer;
     justify-content: center;
+    min-width: 60px;
 }
 
 .header-row {
