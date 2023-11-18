@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
         cardContent.innerHTML = '';
     
         // Add the header row with BINGO letters
-        const headerRow = document.createElement('div');
-        headerRow.classList.add('bingo-row', 'header-row');
-        letters.forEach(letter => {
-            const cell = document.createElement('div');
-            cell.classList.add('bingo-cell');
-            cell.textContent = letter;
-            headerRow.appendChild(cell);
-        });
-        cardContent.appendChild(headerRow);
+        // const headerRow = document.createElement('div');
+        // headerRow.classList.add('bingo-row', 'header-row');
+        // letters.forEach(letter => {
+        //     const cell = document.createElement('div');
+        //     cell.classList.add('bingo-cell');
+        //     cell.textContent = letter;
+        //     headerRow.appendChild(cell);
+        // });
+        // cardContent.appendChild(headerRow);
     
         // Add the content rows
         for (let i = 0; i < 5; i++) {
