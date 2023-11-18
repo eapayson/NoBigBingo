@@ -18,13 +18,12 @@ body {
 }
 
 .bingo-cell {
-    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
     cursor: pointer;
     justify-content: center;
-    min-width: 60px;
+    width: 60px;
 }
 
 .header-row {
