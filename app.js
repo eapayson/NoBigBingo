@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const cell = document.createElement('div');
                 cell.classList.add('bingo-cell');
                 const index = i * 5 + j;
-                cell.textContent = index;//items[index];
+                cell.textContent = items[index];
                 cell.addEventListener('click', toggleColor);
                 row.appendChild(cell);
             }
