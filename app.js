@@ -25,7 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
 					cell.textContent = "FREE SPACE"
 				}
 				else {
-					cell.textContent = items[index];
+					if (items[index].startsWith("Graphic ")) {
+						const remainingStr = items[index].substring("Graphic ".length);
+						const imgElement = document.createElement('img');
+						imgElement.src = remainingStr;
+						cell.appendChild(imgElement);
+					}
+					else {
+						cell.textContent = items[index];
+					}
 				}
                 cell.addEventListener('click', toggleColor);
                 row.appendChild(cell);
