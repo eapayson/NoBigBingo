@@ -1,35 +1,77 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+    font-size: 16px;
+}
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
-#bingo-card {
-    border: 1px solid #ccc;
+.bingo-card {
     border-radius: 5px;
-    overflow: hidden;
+    padding: 2rem;
 }
 
 .bingo-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
 }
 
 .bingo-cell {
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
     border: 1px solid #ccc;
     text-align: center;
     cursor: pointer;
-    justify-content: center;
-    width: 60px;
+    width: 19vw;
+    max-width: 10rem;
+    min-height: 10rem;
+    overflow: wrap;
+    font-size: 1rem;
 }
 
-.header-row {
+.bingo-header {
     background-color: #f0f0f0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
+.bingo-header__cell {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
 }
 
 .clicked {
-    background-color: #aaffaa;
+    /* background-color: #aaffaa; */
+    position: relative;
+}
+
+.clicked::after {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    content: '';
+    width: 60%;
+    height: 60%;
+    background-image: url('images/neil.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }

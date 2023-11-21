@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function computeFontSize() {
+        for(const element of document.querySelectorAll(".bingo-cell__text")){
+            var size = parseInt(getComputedStyle(element).getPropertyValue('font-size'));
+            const parentWidth = parseInt(getComputedStyle(element.parentElement).getPropertyValue('width'))
+            while(element.offsetWidth > (parentWidth - 8)) {
+                element.style.fontSize = (size/16) + "rem"
+                size -= 1
+            }
+        }
+    }
+
     function generateBingoCard(items) {
         shuffle(items);
         const cardContent = document.getElementById('card-content');
@@ -22,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 cell.classList.add('bingo-cell');
                 const index = i * 5 + j;
 				if (index == 12) {
-					cell.textContent = "FREE SPACE"
+					// cell.textContent = "FREE SPACE"
+                    cell.innerHTML = '<p class="bingo-cell__text">FREE SPACE</p>'
 				}
 				else {
 					if (items[index].startsWith("Graphic ")) {
@@ -32,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						cell.appendChild(imgElement);
 					}
 					else {
-						cell.textContent = items[index];
+						cell.innerHTML = '<p class="bingo-cell__text">' + items[index] + '</p>'
 					}
 				}
                 cell.addEventListener('click', toggleColor);
@@ -41,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             cardContent.appendChild(row);
         }
+        computeFontSize();
     }
 
     function toggleColor() {
