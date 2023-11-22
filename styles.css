@@ -11,25 +11,49 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
+	position: relative;
+	z-index: 1;
 }
 
 .bingo-row {
     display: flex;
 }
-
+.header-cell {
+	padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    justify-content: center;
+    width: 100px;
+}
 .bingo-cell {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
     cursor: pointer;
     justify-content: center;
-    width: 60px;
+    width: 100px;
+	height: 100px;
 }
-
 .header-row {
     background-color: #f0f0f0;
 }
 
 .clicked {
     background-color: #aaffaa;
+}
+
+.canvas {
+	display: block;
+    position: absolute;
+}
+#myCanvas {
+	border:1px solid #000;
+	pointer-events: none;
+    z-index: 2; /* Set a higher z-index to bring the canvas to the front */
+}
+#invisibleCanvas {
+	border:1px solid #f00;
+    cursor: pointer;
+    z-index: 3; /* Set a higher z-index to bring the canvas to the front */
 }
