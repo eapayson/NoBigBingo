@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				}
 				else {
 					if (items[index].startsWith("Graphic ")) {
-						const remainingStr = items[index].substring("Graphic ".length);
+						const remainingStr = "assets/" + items[index].substring("Graphic ".length);
 						const imgElement = document.createElement('img');
 						imgElement.src = remainingStr;
 						cell.appendChild(imgElement);
