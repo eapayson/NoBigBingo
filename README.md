@@ -4,6 +4,6 @@ To add items to the list of things that may appear on the bingo card, simply add
 
 Graphic myImage.png
 
-The important part here is that the line must start with "Graphic " (including the one space character) followed by the image name. The image should be stored in the assets directory. If you have a scaled down version (for now), you can put that directly into the assets directory (until I get scaling down of full size versions working) and the originals can go in the 'originals' directory so we don't lose them!
+The important part here is that the line must start with "Graphic " (including the one space character) followed by the image name (in this case, myImage.png). The image does not need to be a png, although this is recommended if the image has transparency. The image should be stored in the assets directory. If you have a scaled down version (for now), you can put that directly into the assets directory (until I get scaling down of full size versions working) and the originals can go in the 'originals' directory so we don't lose them!
 
 In the future, functionality will be added to support having a small bit of text AND an image in the same cell, but this is not currently available.
