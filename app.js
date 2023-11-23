@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
         cell.classList.toggle('clicked');
 		const allCells = document.querySelectorAll('.bingo-cell');
 		const cellIndex = Array.from(allCells).indexOf(cell);
-		console.log('Clicked cell index:', cellIndex);
     }
 
     // Load items from a text file
@@ -80,23 +79,25 @@ document.addEventListener('DOMContentLoaded', function () {
 		invisibleCanvas.setAttribute('height', totalHeight.toString());
 	}
 	function checkWinConditions() {
-		if(checkRows() || checkColumns() || checkDiagonals()) {
+		if(checkRows() || checkColumns() || checkDiagTopLeftBotRight() || checkDiagBotRightTopLeft()) {
 			if(checkRows()) {
 				console.log('row win');
 			}
 			else if(checkColumns()) {
 				console.log('col win');
 			}
-			else if(checkDiagonals()){
+			else if(checkDiagTopLeftBotRight() || checkDiagBotRightTopLeft()){
 				console.log('diag win');
 			}
 			console.log('winner winner flavorless chicken dinner!');
 		}
 	}
+
 	function checkRows() {
 		const rows = document.querySelectorAll('.bingo-row');
 		return Array.from(rows).some(row => row.querySelectorAll('.clicked').length === gridSize);
 	}
+
 	function checkColumns() {
         for (let j = 0; j < gridSize; j++) {
             const column = document.querySelectorAll('.bingo-cell:nth-child(' + gridSize + 'n + ' + (j + 1) + ')');
@@ -107,20 +108,38 @@ document.addEventListener('DOMContentLoaded', function () {
         return false;
     }
 
-    // Function to check if either diagonal has been toggled
-    function checkDiagonals() {
-        const diagonal1 = document.querySelectorAll('.bingo-cell:nth-child(' + (gridSize + 1) + ')');
-        const diagonal2 = document.querySelectorAll('.bingo-cell:nth-child(' + (gridSize - 1) + 'n + ' + (gridSize - 1) + ')');
+    function checkDiagTopLeftBotRight() {
+    	const rows = document.querySelectorAll('.bingo-row:not(.header-row)')
+    	const tlbr = []; //top left to bottom right
 
-		console.log(diagonal1);
-		console.log(diagonal2);
+    	rows.forEach((row, index) => {
+    		const nthItem = row.querySelectorAll(`.bingo-cell:nth-child(${index + 1})`);
+    		tlbr.push(nthItem);
+    	});
 
         return (
-            Array.from(diagonal1).every(cell => cell.classList.contains('clicked')) ||
-            Array.from(diagonal2).every(cell => cell.classList.contains('clicked'))
+            Array.from(tlbr).every(cell => {
+            	return cell[0].classList.contains('clicked');
+            })
         );
     }
-	
+
+	function checkDiagBotRightTopLeft() {
+    	const rows = document.querySelectorAll('.bingo-row:not(.header-row)')
+    	const bltr = [];
+
+    	rows.forEach((row, index) => {
+    		const nthItem = row.querySelectorAll(`.bingo-cell:nth-child(${gridSize - (index)})`);
+    		bltr.push(nthItem);
+    	});
+
+        return (
+            Array.from(bltr).every(cell => {
+            	return cell[0].classList.contains('clicked');
+            })
+        );
+    }
+
 	invisibleCanvas.addEventListener('click', handleInvisibleCanvasClick);
 	
 	function handleInvisibleCanvasClick(event) {
@@ -135,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Toggle the corresponding cell on the visible grid
         const cell = document.querySelector(`.bingo-row:nth-child(${rowIndex + 1}) .bingo-cell:nth-child(${columnIndex + 1})`);
-		console.log('calculated row/col: ', (rowIndex + 1),(columnIndex + 1))
+		//console.log('calculated row/col: ', (rowIndex + 1),(columnIndex + 1))
         if (cell) {
             toggleCell(cell);
             checkWinConditions();
