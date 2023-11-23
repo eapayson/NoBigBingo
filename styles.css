@@ -70,7 +70,6 @@ body {
 }
 
 .clicked {
-    /* background-color: #aaffaa; */
     position: relative;
 }
 
@@ -82,23 +81,23 @@ body {
     content: '';
     width: 60%;
     height: 60%;
-    background-image: url('images/neil.png');
+    background-image: url('assets/neil.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 .canvas {
-	display: block;
+    display: block;
     position: absolute;
 }
 #myCanvas {
-	border:1px solid #000;
-	pointer-events: none;
-    z-index: 2; /* Set a higher z-index to bring the canvas to the front */
+    border:1px solid #000;
+    pointer-events: none;
+    z-index: 2;
 }
 #invisibleCanvas {
-	border:1px solid #f00;
+    border:1px solid #f00;
     cursor: pointer;
-    z-index: 3; /* Set a higher z-index to bring the canvas to the front */
+    z-index: 3;
 }
