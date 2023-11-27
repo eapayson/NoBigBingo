@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function computeFontSize() {
         for(const element of document.querySelectorAll(".bingo-cell__text")){
             var size = parseInt(getComputedStyle(element).getPropertyValue('font-size'));
-            const parentWidth = parseInt(getComputedStyle(element.parentElement).getPropertyValue('width'))
-            while(element.offsetWidth > (parentWidth - 8)) {
+            const parentWidth = parseInt(getComputedStyle(element.parentElement).getPropertyValue('width'));
+            const parentHeight = parseInt(getComputedStyle(element.parentElement).getPropertyValue('height'))
+            while((element.offsetWidth > (parentWidth - 8)) || (element.offsetHeight > (parentHeight - 8))) {
                 element.style.fontSize = (size/16) + "rem"
                 size -= 1
             }
