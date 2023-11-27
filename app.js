@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const index = i * 5 + j;
 				if (index == 12) {
 					// cell.textContent = "FREE SPACE"
-                    cell.innerHTML = '<p class="bingo-cell__text">FREE SPACE</p>'
+                    cell.innerHTML = '<p class="bingo-cell__text bingo-cell__free-space">FREE SPACE</p>'
 				}
 				else {
 					if (items[index].startsWith("Graphic ")) {
