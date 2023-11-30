@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Card Generator</title>
+    <title>#NoBigBingo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,18 +13,12 @@
             <h2 class="header__subtitle" id="bingoSubheading">BINGO</h2>
         </div>
         <div class="bingo-card" id="bingo-card">
-            <!-- Bingo Header -->
-            <!-- <div class="bingo-header">
-                <div class="bingo-header__cell">B</div>
-                <div class="bingo-header__cell">I</div>
-                <div class="bingo-header__cell">N</div>
-                <div class="bingo-header__cell">G</div>
-                <div class="bingo-header__cell">O</div>
-            </div> -->
     
             <!-- Bingo Content -->
             <div id="card-content"></div>
         </div>
+        <canvas id="lineCanvas" class="canvas"></canvas>
+        <canvas id="invisCanvas" class="canvas"></canvas>
         <div class="bonus-content"><p>you're welcome.</p></div>
     </main>
     <script src="app.js"></script>

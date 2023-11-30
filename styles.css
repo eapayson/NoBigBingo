@@ -66,6 +66,7 @@ body {
     max-width: 50rem;
     border: 2px solid #ce6289;
     border-radius: 4px;
+    z-index: 0;
 }
 
 .bingo-row {
@@ -118,19 +119,6 @@ body {
     max-width: calc(20vw - 16px);
 }
 
-/* .bingo-header {
-    background-color: #f0f0f0;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: center;
-} */
-
-/* .bingo-header__cell {
-    width: 100%;
-    padding: 0.5rem 1rem;
-    text-align: center;
-} */
-
 .clicked {
     /* background-color: #aaffaa; */
     position: relative;
@@ -155,6 +143,22 @@ body {
     bottom: 0;
     right: 1rem;
     font-size: 0.75rem;
+}
+
+.canvas {
+    display: block;
+    position: absolute;
+}
+
+#lineCanvas {
+    border: 3px solid #1a5199;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#invisCanvas {
+    border: 1px solid #a4133c;
+    z-index: 2;
 }
 
 @media screen and (min-width: 600px) {
