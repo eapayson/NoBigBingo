@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						cell.innerHTML = '<p class="bingo-cell__text">' + items[index] + '</p>'
 					}
 				}
-                cell.addEventListener('click', toggleColor);
+                //cell.addEventListener('click', toggleCell);
                 row.appendChild(cell);
             }
 
@@ -57,8 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
         initCanvas();
     }
 
-    function toggleColor() {
-        this.classList.toggle('clicked');
+    function toggleCell(cell) {
+        cell.classList.toggle('clicked');
+        const allCells = document.querySelectorAll('.bingo-cell');
+        const cellIndex = Array.from(allCells).indexOf(cell);
     }
 
     const invisCanvas = document.getElementById('invisCanvas');
@@ -69,13 +71,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function initCanvas() {
         const bingoCardElement = document.getElementById('bingo-card');
-        const h = bingoCardElement.clientHeight;
-        const w = bingoCardElement.clientWidth;
+		positionCanvas(invisCanvas, bingoCardElement);
+		positionCanvas(lineCanvas, bingoCardElement);
+    }
+    function positionCanvas(canvas, bingoCard) {
+        const rect = bingoCard.getBoundingClientRect();
+    	canvas.setAttribute('width', bingoCard.clientWidth.toString());
+    	canvas.setAttribute('height', bingoCard.clientHeight.toString());
+    	// canvas.setAttribute('top', rect.top.toString());
+    	// canvas.setAttribute('left', rect.left.toString());
 
-		invisCanvas.setAttribute('width', w.toString());
-		invisCanvas.setAttribute('height', h.toString());
-		lineCanvas.setAttribute('width', w.toString());
-		lineCanvas.setAttribute('height', h.toString());
     }
     function checkWinConditions() {
 		if(checkRows() || checkColumns() || checkDiagTopLeftBotRight() || checkDiagBotRightTopLeft()) {
@@ -139,13 +144,13 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     }
 
-	invisibleCanvas.addEventListener('click', handleInvisibleCanvasClick);
+	invisCanvas.addEventListener('click', handleInvisibleCanvasClick);
 	
 	function handleInvisibleCanvasClick(event) {
-        const rect = invisibleCanvas.getBoundingClientRect();
+        const rect = invisCanvas.getBoundingClientRect();
         const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top - headerHeight;
-        const cellSize = canvas.width / gridSize;
+        const y = event.clientY - rect.top;
+        const cellSize = lineCanvas.width / gridSize;
         const columnIndex = Math.floor(x / cellSize);
         const rowIndex = Math.floor(y / cellSize);
 
